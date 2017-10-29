@@ -1,0 +1,6 @@
+[user]
+	name = Tom Ridge
+	email = thomas.ridge@cultureamp.com
+[core]
+	editor = nvim
+	excludesfile = /Users/thomas.ridge/.gitignore_global
