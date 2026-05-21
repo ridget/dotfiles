@@ -1,140 +1,170 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# ─── P10K INSTANT PROMPT ──────────────────────────────────────────────────────
+# Must stay at the top. Anything requiring console input goes above this block.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/thomas.ridge/.oh-my-zsh"
+# ─── OH-MY-ZSH ───────────────────────────────────────────────────────────────
+export ZSH="/Users/ridget/.oh-my-zsh"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+DEFAULT_USER="ridget"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+# Homebrew completions (hardcoded to avoid subshell on every startup)
+FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
+autoload -Uz compinit
+compinit
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler rake ruby rails)
+plugins=(git brew macos zsh-autosuggestions zsh-syntax-highlighting web-search z)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# ─── SECRETS & TOKENS ─────────────────────────────────────────────────────────
+[[ -f ~/.secrets ]] && source ~/.secrets
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
+# ─── EDITOR ───────────────────────────────────────────────────────────────────
+alias vim="$HOMEBREW_PREFIX/opt/neovim/bin/nvim"
+alias nvim="$HOMEBREW_PREFIX/opt/neovim/bin/nvim"
 export VISUAL=vim
 export EDITOR="$VISUAL"
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit
-compinit
-export ***REMOVED***="***REMOVED***"
 
+# ─── PATH ─────────────────────────────────────────────────────────────────────
+export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
+export PATH="/opt/homebrew/opt/libxslt/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export PATH="/usr/local/opt/mongodb-community@3.4/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+# ─── TOOLCHAIN (mise, direnv) ─────────────────────────────────────────────────
+eval "$(/Users/ridget/.local/bin/mise activate zsh)"
+eval "$(direnv hook zsh)"
+
+# ─── GO ───────────────────────────────────────────────────────────────────────
+export GOPATH="$HOME/.go"
+export PATH="$PATH:$GOPATH/bin"
+
+# ─── FZF ──────────────────────────────────────────────────────────────────────
+eval "$(fzf --zsh)"
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Theme
+fg="#CBE0F0"
+bg="#011628"
+bg_highlight="#143652"
+purple="#B388FF"
+blue="#06BCE4"
+cyan="#2CF9ED"
+export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
+
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+_fzf_compgen_path() {
+    fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+    fd --type=d --hidden --exclude .git . "$1"
+}
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
+
+source ~/fzf-git.sh/fzf-git.sh
+
+# ─── CLI TOOLS (bat, eza, zoxide) ─────────────────────────────────────────────
+export BAT_THEME=tokyonight_night
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+eval "$(zoxide init zsh)"
+
+# ─── PACKAGE MANAGERS (pnpm, cargo) ───────────────────────────────────────────
+export PNPM_HOME="/Users/ridget/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# ─── EMACS ────────────────────────────────────────────────────────────────────
 export PATH="$HOME/.emacs.d/bin:$PATH"
-export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
-export PATH="$PATH:/Applications/Emacs.app/Contents/MacOS/Emacs"
+export LIBRARY_PATH="/opt/homebrew/lib/gcc/current:$LIBRARY_PATH"
+alias e="emacsclient -c -a ''"
 
+# ─── ERLANG/ELIXIR (KERL) ─────────────────────────────────────────────────────
+export KERL_BUILD_DOCS=yes
+export KERL_INSTALL_MANPAGES=yes
+export wxUSE_MACOSX_VERSION_MIN=11.3
+export EGREP=egrep
+export CC=clang
+export CPP="clang -E"
+export KERL_USE_AUTOCONF=0
+export KERL_CONFIGURE_OPTIONS="--disable-debug \
+                               --disable-hipe \
+                               --disable-sctp \
+                               --disable-silent-rules \
+                               --enable-darwin-64bit \
+                               --enable-dynamic-ssl-lib \
+                               --enable-kernel-poll \
+                               --enable-shared-zlib \
+                               --enable-smp-support \
+                               --enable-threads \
+                               --enable-wx \
+                               --with-wx \
+                               --enable-webview \
+                               --with-ssl=/opt/local \
+                               --with-wx-config=/opt/homebrew/bin/wx-config \
+                               --without-javac \
+                               --without-jinterface \
+                               --without-odbc"
 
-. /usr/local/opt/asdf/asdf.sh
+# ─── ALIASES ──────────────────────────────────────────────────────────────────
+# Navigation
+alias ..="cd .."
+alias ...="cd ../.."
 
-. /usr/local/opt/asdf/libexec/asdf.sh
+# Git (extending oh-my-zsh git plugin)
+alias gcom="git checkout main"
+alias gdc="git diff --cached"
+alias gca="git commit --amend"
+alias gcan="git commit --amend --no-edit"
+alias lg="lazygit"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/thomas.ridge/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/thomas.ridge/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/thomas.ridge/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/thomas.ridge/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# Claude
+alias cc="claude ."
 
+# Direnv
+alias da="direnv allow"
 
-alias emacs='$(/Applications/Emacs.app/Contents/MacOS/Emacs -nw)'
+# Devbox
+alias dsu="devbox services up"
+alias dsh="devbox shell"
+
+# Hotel (Culture Amp)
+alias hsc="hotel services up cerbos"
+alias hse="hotel setup ensure"
+
+# pnpm
+alias ptu="pnpm test -- -u"
+alias plw="pnpm lint --write"
+
+# Python (ruff)
+alias rf="ruff format"
+alias rcf="ruff check --fix"
+
+# ─── P10K CONFIG ──────────────────────────────────────────────────────────────
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# ─── MACHINE-SPECIFIC ─────────────────────────────────────────────────────────
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+export PATH="$HOME/.local/bin:$PATH"
+alias claude="$HOME/.local/bin/claude"

@@ -1,5 +1,46 @@
 [user]
-	email = tomridge2@gmail.com
-	name = Tom Ridge
+    email = tomridge2@gmail.com
+    name = Tom Ridge
+
 [init]
-	defaultBranch = main
+    defaultBranch = main
+
+[core]
+    pager = delta
+    editor = nvim
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    side-by-side = true
+    line-numbers = true
+    hyperlinks = true
+
+[merge]
+    conflictstyle = zdiff3
+
+[diff]
+    colorMoved = default
+    algorithm = histogram
+
+[push]
+    autoSetupRemote = true
+    default = current
+
+[pull]
+    rebase = true
+
+[rebase]
+    autoStash = true
+    autoSquash = true
+
+[fetch]
+    prune = true
+
+[rerere]
+    enabled = true
+
+[credential "https://github.com"]
+    helper = !/opt/homebrew/bin/gh auth git-credential

@@ -1,0 +1,25 @@
+;;; config.local.el.example --- Template for machine-specific config -*- lexical-binding: t; -*-
+;;
+;; Copy this to config.local.el and customise for this machine.
+;; This file IS tracked in git; config.local.el is NOT.
+
+;; ---------------------------------------------------------------------------
+;; PROJECTILE (override search paths for this machine)
+;; ---------------------------------------------------------------------------
+;; (setq projectile-project-search-path '(("~/cultureamp/" . 1) ("~/projects/" . 2)))
+
+;; ---------------------------------------------------------------------------
+;; WORK TOOLS (hotel, AWS, etc.)
+;; ---------------------------------------------------------------------------
+;; (defun hotel-run ()
+;;   "Pick and run a hotel command in a vterm buffer."
+;;   (interactive)
+;;   (let* ((commands '(("services up"   . "hotel services up cerbos")
+;;                      ("services down" . "hotel services down")
+;;                      ("doctor"        . "hotel doctor")))
+;;          (choice (completing-read "Hotel: " (mapcar #'car commands) nil t))
+;;          (cmd (cdr (assoc choice commands))))
+;;     (vterm (format "*hotel:%s*" choice))
+;;     (vterm-send-string (format "%s\n" cmd))))
+;;
+;; (map! :leader :desc "Hotel" "H" #'hotel-run)
