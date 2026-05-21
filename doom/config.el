@@ -202,32 +202,6 @@
 (setq org-babel-python-command "python3")
 
 
-;; roblox luau
-;; (after! projectile
-;;   (projectile-register-project-type 'roblox-luau 
-;;                                     '("default.project.json") 
-;;                                     :project-file "default.project.json"
-;;                                     :compile "lune run build"
-;;                                     :test "lune run test"
-;;                                     ;; Changed :run to :run-command for compatibility
-;;                                     :run-command "rojo serve"
-;;                                     :src-dir "src/"))
-
-(use-package! eglot-luau
-  :after eglot
-  :init
-  (setq eglot-luau-rojo-sourcemap-enabled t
-        eglot-luau-rojo-sourcemap-includes-non-scripts t
-        eglot-luau-auto-update-roblox-docs t
-        eglot-luau-auto-update-roblox-types t
-        eglot-luau-fflag-overrides '(("LuauSolverV2" "True")))
-  :hook
-  (lua-mode . eglot-luau-setup)
-  (lua-mode . eglot-ensure))
-
-
-(add-to-list 'auto-mode-alist '("\\.luau\\'" . lua-mode))
-
 ;; (use-package! mise
 ;;   :config
 ;;   (add-hook 'after-init-hook #'global-mise-mode))

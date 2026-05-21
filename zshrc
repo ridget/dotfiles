@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # ─── OH-MY-ZSH ───────────────────────────────────────────────────────────────
-export ZSH="/Users/ridget/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 DEFAULT_USER="ridget"
 
@@ -14,7 +14,7 @@ FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 autoload -Uz compinit
 compinit
 
-plugins=(git brew macos zsh-autosuggestions zsh-syntax-highlighting web-search z)
+plugins=(git brew macos zsh-autosuggestions zsh-syntax-highlighting web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -22,19 +22,17 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.secrets ]] && source ~/.secrets
 
 # ─── EDITOR ───────────────────────────────────────────────────────────────────
-alias vim="$HOMEBREW_PREFIX/opt/neovim/bin/nvim"
-alias nvim="$HOMEBREW_PREFIX/opt/neovim/bin/nvim"
-export VISUAL=vim
+alias vim="nvim"
+export VISUAL="nvim"
 export EDITOR="$VISUAL"
 
 # ─── PATH ─────────────────────────────────────────────────────────────────────
 export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
 export PATH="/opt/homebrew/opt/libxslt/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # ─── TOOLCHAIN (mise, direnv) ─────────────────────────────────────────────────
-eval "$(/Users/ridget/.local/bin/mise activate zsh)"
+eval "$(mise activate zsh)"
 eval "$(direnv hook zsh)"
 
 # ─── GO ───────────────────────────────────────────────────────────────────────
@@ -88,7 +86,7 @@ alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time
 eval "$(zoxide init zsh)"
 
 # ─── PACKAGE MANAGERS (pnpm, cargo) ───────────────────────────────────────────
-export PNPM_HOME="/Users/ridget/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -99,33 +97,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export LIBRARY_PATH="/opt/homebrew/lib/gcc/current:$LIBRARY_PATH"
 alias e="emacsclient -c -a ''"
-
-# ─── ERLANG/ELIXIR (KERL) ─────────────────────────────────────────────────────
-export KERL_BUILD_DOCS=yes
-export KERL_INSTALL_MANPAGES=yes
-export wxUSE_MACOSX_VERSION_MIN=11.3
-export EGREP=egrep
-export CC=clang
-export CPP="clang -E"
-export KERL_USE_AUTOCONF=0
-export KERL_CONFIGURE_OPTIONS="--disable-debug \
-                               --disable-hipe \
-                               --disable-sctp \
-                               --disable-silent-rules \
-                               --enable-darwin-64bit \
-                               --enable-dynamic-ssl-lib \
-                               --enable-kernel-poll \
-                               --enable-shared-zlib \
-                               --enable-smp-support \
-                               --enable-threads \
-                               --enable-wx \
-                               --with-wx \
-                               --enable-webview \
-                               --with-ssl=/opt/local \
-                               --with-wx-config=/opt/homebrew/bin/wx-config \
-                               --without-javac \
-                               --without-jinterface \
-                               --without-odbc"
 
 # ─── ALIASES ──────────────────────────────────────────────────────────────────
 # Navigation
@@ -148,10 +119,6 @@ alias da="direnv allow"
 # Devbox
 alias dsu="devbox services up"
 alias dsh="devbox shell"
-
-# Hotel (Culture Amp)
-alias hsc="hotel services up cerbos"
-alias hse="hotel setup ensure"
 
 # pnpm
 alias ptu="pnpm test -- -u"
