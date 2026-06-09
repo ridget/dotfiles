@@ -82,7 +82,6 @@ source ~/fzf-git.sh/fzf-git.sh
 
 # ─── CLI TOOLS (bat, eza, zoxide) ─────────────────────────────────────────────
 export BAT_THEME=tokyonight_night
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 eval "$(zoxide init zsh)"
 
 # ─── PACKAGE MANAGERS (pnpm, cargo) ───────────────────────────────────────────
@@ -134,4 +133,11 @@ alias rcf="ruff check --fix"
 # ─── MACHINE-SPECIFIC ─────────────────────────────────────────────────────────
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 export PATH="$HOME/.local/bin:$PATH"
-alias claude="$HOME/.local/bin/claude"
+alias claude='env -u CLAUDE_CODE_USE_BEDROCK claude'
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/ridget/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# The next line was added by hotel, leave it at the bottom of this file
+source /Users/ridget/.config/hotel/config.zsh
