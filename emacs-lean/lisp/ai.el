@@ -81,13 +81,30 @@
   (setq agent-shell-preferred-agent-config agent)
   (agent-shell-new-shell))
 
+;;; Pi — AI coding agent TUI (https://pi.dev); install: npm i -g @pi-dev/cli
+(defun my/pi ()
+  "Open a ghostel buffer running `pi` at the current project root.
+Reuses an existing *pi:<project>* buffer if already open."
+  (interactive)
+  (let* ((pr (ignore-errors (project-current)))
+         (root (if pr (project-root pr) default-directory))
+         (name (file-name-nondirectory (directory-file-name root)))
+         (buf-name (format "*pi:%s*" name)))
+    (if-let ((buf (get-buffer buf-name)))
+        (pop-to-buffer buf)
+      (let ((default-directory root))
+        (ghostel buf-name)
+        (with-current-buffer buf-name
+          (ghostel-send-string "pi\n"))))))
+
 ;;; Leader bindings — SPC a for AI
 (with-eval-after-load 'general
   (+leader
     :infix "a"
-    ""  '(:ignore t              :wk "ai")
-    "a" '(agent-shell            :wk "agent shell")
-    "n" '(agent-shell-new-shell  :wk "new agent shell")
+    ""  '(:ignore t                   :wk "ai")
+    "a" '(agent-shell                 :wk "agent shell")
+    "n" '(agent-shell-new-shell       :wk "new agent shell")
+    "p" '(my/pi                       :wk "pi agent")
     "c" '(eca-chat-toggle-window      :wk "chat")
     "s" '(eca                         :wk "start chat")
     "S" '(eca-stop                    :wk "stop chat")
