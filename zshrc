@@ -93,9 +93,8 @@ esac
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # ─── EMACS ────────────────────────────────────────────────────────────────────
-export PATH="$HOME/.emacs.d/bin:$PATH"
 export LIBRARY_PATH="/opt/homebrew/lib/gcc/current:$LIBRARY_PATH"
-alias e="/opt/homebrew/opt/emacs-plus@30/bin/emacsclient -t -a ''"
+alias e="emacs --init-directory=~/.config/emacs-lean"
 
 # ─── ALIASES ──────────────────────────────────────────────────────────────────
 # Navigation
