@@ -14,6 +14,7 @@
 
 ;;; Agent Shell — coding agent (claude-code / cursor, MELPA)
 (use-package agent-shell
+  :vc (:url "https://github.com/xenodium/agent-shell" :rev :newest)
   :commands (agent-shell agent-shell-new-shell)
   :config
   (setq agent-shell-preferred-agent-config 'claude-code)

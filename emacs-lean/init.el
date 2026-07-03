@@ -28,7 +28,7 @@
               corfu cape nerd-icons-corfu nerd-icons-completion
               general magit diff-hl ghostel sideline sideline-flymake
               helpful treesit-auto web-mode
-              markdown-mode emmet-mode agent-shell)))
+              markdown-mode emmet-mode)))
   (dolist (pkg pkgs)
     (unless (package-installed-p pkg)
       (package-install pkg))))

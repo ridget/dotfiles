@@ -95,6 +95,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # ─── EMACS ────────────────────────────────────────────────────────────────────
 export LIBRARY_PATH="/opt/homebrew/lib/gcc/current:$LIBRARY_PATH"
 alias e="emacs --init-directory=~/.config/emacs-lean"
+alias emacs="emacs --init-directory=~/.config/emacs-lean"
 
 # ─── ALIASES ──────────────────────────────────────────────────────────────────
 # Navigation
