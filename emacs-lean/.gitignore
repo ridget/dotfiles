@@ -1,0 +1,11 @@
+elpa/
+eln-cache/
+auto-save-list/
+tree-sitter/
+history
+places
+recentf
+projects
+custom.el
+*~
+\#*\#
