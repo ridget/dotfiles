@@ -95,7 +95,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # ─── EMACS ────────────────────────────────────────────────────────────────────
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export LIBRARY_PATH="/opt/homebrew/lib/gcc/current:$LIBRARY_PATH"
-alias e="emacsclient -c -a ''"
+alias e="/opt/homebrew/opt/emacs-plus@30/bin/emacsclient -t -a ''"
 
 # ─── ALIASES ──────────────────────────────────────────────────────────────────
 # Navigation
@@ -133,11 +133,21 @@ alias rcf="ruff check --fix"
 # ─── MACHINE-SPECIFIC ─────────────────────────────────────────────────────────
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 export PATH="$HOME/.local/bin:$PATH"
-alias claude='env -u CLAUDE_CODE_USE_BEDROCK claude'
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/ridget/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # The next line was added by hotel, leave it at the bottom of this file
-source /Users/ridget/.config/hotel/config.zsh
+source /Users/thomas.ridge/.config/hotel/config.zsh
+
+# ---  gopath
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/thomas.ridge/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# bun completions
+[ -s "/Users/thomas.ridge/.bun/_bun" ] && source "/Users/thomas.ridge/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
