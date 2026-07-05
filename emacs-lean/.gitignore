@@ -7,5 +7,6 @@ places
 recentf
 projects
 custom.el
+local.el
 *~
 \#*\#

@@ -1,0 +1,5 @@
+;;; local.el --- machine-local overrides (copy to local.el; gitignored) -*- lexical-binding: t; -*-
+;;; On machines that should edit Unity/C#, copy this file to local.el.
+(setq my/unity-enabled t)
+
+;;; local.el.example ends here

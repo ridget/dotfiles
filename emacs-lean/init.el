@@ -37,6 +37,11 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
 
+;;; Machine-local feature flags (copy local.el.example → local.el; gitignored)
+(defvar my/unity-enabled nil
+  "When non-nil, load C#/Unity support. Set in local.el on machines that need it.")
+(load (expand-file-name "local.el" user-emacs-directory) 'noerror 'nomessage)
+
 ;;; Module loader
 (defun my/load (module)
   "Load MODULE from the lisp/ subdirectory."
@@ -60,6 +65,7 @@
 (my/load "lang-ruby")
 (my/load "lang-elixir")
 (my/load "lang-misc")
+(when my/unity-enabled (my/load "lang-csharp"))
 (my/load "obsidian")
 (my/load "db")
 
