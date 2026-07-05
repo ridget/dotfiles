@@ -3,7 +3,7 @@
 (use-package obsidian
   :vc (:url "https://github.com/licht1stein/obsidian.el" :rev :newest)
   :config
-  (obsidian-specify-path "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain")
+  (obsidian-directory "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain")
   (global-obsidian-mode t)
   :custom
   (obsidian-inbox-directory "inbox")

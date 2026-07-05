@@ -15,9 +15,9 @@
 ;; required for eglot. Verify the wrapper's exact stdio invocation from its README.
 ;; Fallback if the handshake is too fiddly: csharp-ls
 ;;   (dotnet tool install -g csharp-ls) with server entry ("csharp-ls").
-(with-eval-after-load 'eglot
+(with-eval-after-load 'eglotexport DOTNET_GOTO_DEFINITION_SYMBOLIC_LINKS=true
   (add-to-list 'eglot-server-programs
-               '(csharp-ts-mode . ("roslyn-language-server"))))
+               '(csharp-ts-mode . ("roslyn-language-server" "--stdio" "--autoLoadProjects"))))
 
 ;; Unity generated project metadata — .asmdef is JSON
 (add-to-list 'auto-mode-alist '("\\.asmdef\\'" . json-ts-mode))

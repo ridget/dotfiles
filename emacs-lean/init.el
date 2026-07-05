@@ -47,6 +47,11 @@
   "Load MODULE from the lisp/ subdirectory."
   (load (expand-file-name (format "lisp/%s" module) user-emacs-directory) nil t))
 
+(when (eq system-type 'darwin)
+  ;; Tells the native compiler driver where to find GCC's emutls library
+  (setq native-comp-driver-options 
+        '("-B/opt/homebrew/Cellar/gcc/16.1.0/lib/gcc/current/gcc/aarch64-apple-darwin25/16/")))
+
 ;;; Core (order matters: core → ui → evil → completion → keys → rest)
 (my/load "core")
 (my/load "ui")
