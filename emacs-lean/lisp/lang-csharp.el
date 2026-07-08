@@ -33,6 +33,7 @@
 ;;   → the unity.el `code` shim; Args: emacsclient -n +$(Line):$(Column) $(File)
 ;; Run Emacs as a daemon (emacs --daemon) so emacsclient round-trips work.
 (use-package unity
+  :vc (:url "https://github.com/elizagamedev/unity.el")
   :hook (csharp-ts-mode . unity-mode))
 
 ;;; lang-csharp.el ends here

@@ -1,0 +1,43 @@
+;; -*- mode: emacs-lisp; lexical-binding:t; coding: utf-8-emacs; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Wed Jul  8 20:31:22 2026
+;; Desktop file format version 208
+;; Emacs version 30.2
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (27214 11778 596195 0) (desktop . "208") "ridget@Toms-MacBook-Pro.local" nil nil ((((minibuffer . t) (fontsize . 0) (font . "-*-Fira Code-regular-normal-normal-*-14-*-*-*-m-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (child-frame-border-width) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "#bbc2cf") (background-color . "#282c34") (line-spacing) (left-fringe . 8) (right-fringe . 8) (no-special-glyphs) (undecorated) (undecorated-round) (ns-appearance) (ns-transparent-titlebar) (z-group) (no-focus-on-map) (no-accept-focus) (menu-bar-lines . 1) (tab-bar-lines . 0) (tool-bar-lines . 0) (title) (inhibit-double-buffering) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 17) (scroll-bar-height . 17) (alpha) (alpha-background) (fullscreen) (environment "_=/opt/homebrew/bin/emacsclient" "SECURITYSESSIONID=186b0" "OSLogRateLimit=64" "LOGNAME=ridget" "HOME=/Users/ridget" "SHLVL=1" "XPC_SERVICE_NAME=application.org.gnu.EmacsClient.34728082.34729929" "XPC_FLAGS=0x0" "PWD=/" "__CFBundleIdentifier=org.gnu.EmacsClient" "LaunchInstanceID=F9EBCD77-2A0F-4F95-A850-2FD7B5AA3E6B" "__CF_USER_TEXT_ENCODING=0x1F5:0:15" "SSH_AUTH_SOCK=/var/run/com.apple.launchd.aE0ozQrULh/Listeners" "COMMAND_MODE=unix2003" "USER=ridget" "TMPDIR=/var/folders/l9/9_pjvfyn68785k6bgly3d3cr0000gn/T/" "SHELL=/bin/zsh" "PATH=/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:/opt/homebrew/sbin") (display . "Toms-MacBook-Pro.local") (scroll-bar-foreground) (scroll-bar-background) (display-type . color) (background-mode . dark) (cursor-color . "#51afef") (font-parameter) (last-focus-update) (frameset--id . "40C5-815D-1EFA-C769") (frameset--mini t . t) (frameset--text-pixel-width . 1708) (frameset--text-pixel-height . 984) (height . 57) (width . 189) (modeline . t) (unsplittable) (left . 0) (top . 33) (icon-name) (visibility . t) (explicit-name) (tool-bar-position . top)) ((min-height . 4) (min-width . 10) (min-height-ignore . 3) (min-width-ignore . 6) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 68) (min-pixel-width . 90) (min-pixel-height-ignore . 51) (min-pixel-width-ignore . 54) (min-pixel-height-safe . 17) (min-pixel-width-safe . 18)) leaf (pixel-width . 1724) (pixel-height . 967) (total-width . 192) (total-height . 56) (normal-height . 1.0) (normal-width . 1.0) (buffer "App.tsx" (selected . t) (hscroll . 0) (fringes 8 8 nil nil) (margins 2) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 512) (start . 1)) (prev-buffers ("index.d.ts" 61749 62961) ("App.tsx" 1 558) ("*scratch*" 1 148) ("*dashboard*" 1 1))) (((minibuffer . t) (display-type . mono) (background-mode . dark) (scroll-bar-foreground) (scroll-bar-background) (cursor-color . "white") (foreground-color . "unspecified-fg") (background-color . "unspecified-bg") (font . "tty") (height . 24) (width . 80) (modeline . t) (unsplittable) (menu-bar-lines . 1) (tab-bar-lines . 0) (tool-bar-lines . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (frameset--id . "1926-0CE3-59EB-6CA9") (frameset--mini t) (frameset--text-pixel-width . 80) (frameset--text-pixel-height . 24)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 2) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 4) (min-pixel-width . 10) (min-pixel-height-ignore . 2) (min-pixel-width-ignore . 2) (min-pixel-height-safe . 1) (min-pixel-width-safe . 2)) leaf (pixel-width . 80) (pixel-height . 23) (total-width . 80) (total-height . 23) (normal-height . 1.0) (normal-width . 1.0) (buffer "*dashboard*" (selected) (hscroll . 0) (fringes 0 0 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1) (start . 1)) (prev-buffers ("App.tsx" 1 355))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring nil)
+(setq register-alist '((48 . #("⛔ Error (use-package): obsidian/:config: Symbol’s function definition is void: obsidian-specify-path\n" 0 1 (yank-handler (evil-yank-line-handler nil t) font-lock-face button mouse-face highlight button t follow-link t category t button-data use-package keymap (keymap (touchscreen-down . push-button) (header-line keymap (touchscreen-down . push-button) (mouse-2 . push-button)) (mode-line keymap (touchscreen-down . push-button) (mouse-2 . push-button)) (follow-link . mouse-face) (mouse-2 . push-button) (13 . push-button) keymap (backtab . backward-button) (27 keymap (9 . backward-button)) (9 . forward-button)) action warnings-suppress rear-nonsticky t help-echo nil face (icon button)) 1 2 (yank-handler (evil-yank-line-handler nil t)) 2 23 (yank-handler (evil-yank-line-handler nil t)) 23 101 (yank-handler (evil-yank-line-handler nil t))))))
+(setq file-name-history '(#("/Users/ridget/projects/simple-counter/src/App.tsx" 0 49 (project "~/projects/simple-counter/")) "~/.config/emacs-lean/" #("/Users/ridget/projects/simple-counter/src/App.tsx" 0 49 (project "~/projects/simple-counter/")) "~/dotfiles/emacs-lean/"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "/Users/ridget/projects/simple-counter/src/App.tsx"
+  "App.tsx"
+  'tsx-ts-mode
+  '(eglot-inlay-hints-mode eldoc-mode sideline-mode flymake-mode eglot--managed-mode font-lock-mode display-line-numbers-mode evil-local-mode evil-collection-unimpaired-mode evil-surround-mode evil-matchit-mode corfu-mode apheleia-mode envrc-mode auto-revert-mode yas-minor-mode hl-todo-mode diff-hl-mode)
+  512
+  '(558 nil)
+  nil
+  nil
+  '((buffer-display-time 27214 11673 482479 0) (buffer-file-coding-system . undecided-unix) (overwrite-mode))
+  '((mark-ring (558 704 704 943 944))))
+
+(desktop-create-buffer 208
+  "/Users/ridget/projects/simple-counter/node_modules/@types/react/ts5.0/index.d.ts"
+  "index.d.ts"
+  'typescript-ts-mode
+  '(font-lock-mode display-line-numbers-mode evil-local-mode evil-collection-unimpaired-mode evil-surround-mode evil-matchit-mode eglot-inlay-hints-mode eldoc-mode sideline-mode flymake-mode eglot--managed-mode corfu-mode apheleia-mode envrc-mode yas-minor-mode hl-todo-mode diff-hl-mode)
+  62961
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 27214 11666 613036 0) (buffer-file-coding-system . utf-8-unix) (overwrite-mode))
+  '((mark-ring nil)))
+

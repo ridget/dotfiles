@@ -134,20 +134,6 @@ alias rcf="ruff check --fix"
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 export PATH="$HOME/.local/bin:$PATH"
 
-# The next line was added by hotel, leave it at the bottom of this file
-source /Users/thomas.ridge/.config/hotel/config.zsh
-
-# ---  gopath
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/thomas.ridge/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
-# bun completions
-[ -s "/Users/thomas.ridge/.bun/_bun" ] && source "/Users/thomas.ridge/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+#--- DOTNET/UNITY
+export DOTNET_GOTO_DEFINITION_SYMBOLIC_LINKS=true
+export PATH="$HOME/.dotnet/tools:$PATH"
