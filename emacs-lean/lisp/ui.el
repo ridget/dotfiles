@@ -1,7 +1,7 @@
 ;;; lisp/ui.el --- Visual presentation -*- lexical-binding: t; -*-
 
 ;;; Line numbers
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
 
 ;;; Fonts — Fira Code 14pt default, Ubuntu 16pt variable-pitch

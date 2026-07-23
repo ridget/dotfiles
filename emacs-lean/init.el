@@ -26,7 +26,7 @@
               evil evil-collection evil-surround evil-nerd-commenter evil-matchit
               vertico orderless marginalia consult embark embark-consult
               corfu cape nerd-icons-corfu nerd-icons-completion
-              general magit diff-hl ghostel sideline sideline-flymake
+              general magit diff-hl ghostel sideline sideline-flymake consult-dir
               helpful treesit-auto web-mode
               markdown-mode emmet-mode)))
   (dolist (pkg pkgs)
@@ -69,6 +69,8 @@
 (my/load "lang-web")
 (my/load "lang-ruby")
 (my/load "lang-elixir")
+(my/load "lang-go")
+(my/load "lang-gdscript")
 (my/load "lang-misc")
 (when my/unity-enabled (my/load "lang-csharp"))
 (my/load "obsidian")

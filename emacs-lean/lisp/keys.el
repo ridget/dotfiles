@@ -14,7 +14,9 @@
     "."   '(find-file                   :wk "find file")
     ","   '(consult-buffer              :wk "switch buffer")
     ":"   '(execute-extended-command    :wk "M-x")
-    "/"   '(consult-ripgrep             :wk "search project"))
+    "/"   '(consult-ripgrep             :wk "search project")
+    "TAB" '(evil-switch-to-windows-last-buffer :wk "last buffer")
+    "x"   '(scratch-buffer              :wk "scratch buffer"))
 
   ;;; f — file
   (+leader
@@ -25,7 +27,7 @@
     "r" '(consult-recent-file           :wk "recent files")
     "R" '(rename-visited-file           :wk "rename file")
     "y" '(my/yank-file-path             :wk "yank file path")
-    "D" '(my/delete-current-file        :wk "delete file"))
+    "d" '(my/delete-current-file        :wk "delete file"))
 
   ;;; b — buffers
   (+leader
@@ -46,7 +48,7 @@
     ""  '(:ignore t :wk "project")
     "p" '(project-switch-project        :wk "switch project")
     "f" '(project-find-file             :wk "find file in project")
-    "r" '(consult-ripgrep               :wk "search project")
+    "d" '(my/project-find-directory      :wk "find directory")
     "k" '(project-kill-buffers          :wk "kill project buffers")
     "u" '(devbox-services-up            :wk "devbox services up"))
 
@@ -56,6 +58,9 @@
     ""  '(:ignore t :wk "search")
     "s" '(consult-line                  :wk "search in buffer")
     "p" '(consult-ripgrep               :wk "search project")
+    "b" '(consult-line-multi             :wk "search open buffers")
+    "d" '(my/consult-ripgrep-directory  :wk "search in directory")
+    "r" '(consult-resume                :wk "resume last search")
     "S" '(consult-isearch-history       :wk "isearch history")
     "i" '(consult-imenu                 :wk "goto symbol"))
 
@@ -66,7 +71,9 @@
     "g" '(magit-status                  :wk "magit status")
     "b" '(magit-blame                   :wk "blame")
     "l" '(magit-log-buffer-file         :wk "file log")
-    "r" '(diff-hl-revert-hunk           :wk "revert hunk"))
+    "r" '(diff-hl-revert-hunk           :wk "revert hunk")
+    "s" '(diff-hl-stage-current-hunk   :wk "stage hunk")
+    "d" '(diff-hl-diff-goto-hunk       :wk "diff at point"))
 
   ;;; c — code (eglot)
   (+leader
@@ -76,6 +83,7 @@
     "a" '(eglot-code-actions            :wk "code actions")
     "f" '(eglot-format                  :wk "format buffer")
     "d" '(consult-flymake               :wk "diagnostics")
+    "o" '(eglot-code-action-organize-imports :wk "organize imports")
     "x" '(eglot-reconnect               :wk "reconnect LSP"))
 
   ;;; h — help (helpful)
@@ -98,13 +106,18 @@
     "r" '(eval-region                   :wk "eval region")
     "i" '(ielm                          :wk "ielm REPL"))
 
+  ;;; i — insert
+  (+leader
+    :infix "i"
+    ""  '(:ignore t :wk "insert")
+    "s" '(yas-insert-snippet            :wk "snippet"))
+
   ;;; o — open
   (+leader
     :infix "o"
     ""  '(:ignore t :wk "open")
     "t" '(ghostel                       :wk "terminal")
-    "-" '(dired-jump                    :wk "dired here")
-    "d" '(dired-jump                    :wk "dired"))
+    "d" '(dired-jump                    :wk "dired here"))
 
   ;;; w — windows
   (+leader
@@ -126,7 +139,7 @@
   (+leader
     :infix "t"
     ""  '(:ignore t :wk "toggle")
-    "l" '(display-line-numbers-mode     :wk "line numbers")
+    "l" '(my/cycle-line-numbers          :wk "line numbers")
     "w" '(visual-line-mode              :wk "word wrap")
     "f" '(flymake-mode                  :wk "flymake")
     "t" '(consult-theme                 :wk "theme")
@@ -142,6 +155,27 @@
     "f" '(delete-frame                  :wk "close frame")))
 
 ;;; Utility commands referenced in the leader tree
+
+(defun my/consult-ripgrep-directory ()
+  "Ripgrep in a chosen directory."
+  (interactive)
+  (let ((dir (read-directory-name "Search in: ")))
+    (consult-ripgrep dir)))
+
+(defun my/cycle-line-numbers ()
+  "Cycle: relative → absolute → off."
+  (interactive)
+  (cond
+   ((eq display-line-numbers 'relative)
+    (setq display-line-numbers t)
+    (message "Line numbers: absolute"))
+   ((eq display-line-numbers t)
+    (setq display-line-numbers nil)
+    (message "Line numbers: off"))
+   (t
+    (setq display-line-numbers 'relative)
+    (message "Line numbers: relative"))))
+
 (defun my/yank-file-path ()
   "Copy the current buffer's file path to the kill ring."
   (interactive)

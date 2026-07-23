@@ -26,7 +26,11 @@
 
 ;;; Commenter (gc to comment, gcc for line)
 (use-package evil-nerd-commenter
-  :after evil)
+  :after evil
+  :config
+  (define-key evil-normal-state-map "gc" #'evilnc-comment-operator)
+  (define-key evil-visual-state-map "gc" #'evilnc-comment-operator)
+  (define-key evil-normal-state-map "gcc" #'evilnc-comment-or-uncomment-lines))
 
 ;;; Matchit — extended % matching
 (use-package evil-matchit
@@ -56,5 +60,12 @@
     (evil-textobj-tree-sitter-get-textobj "call.outer"))
   (define-key evil-outer-text-objects-map "g"
     (evil-textobj-tree-sitter-get-textobj "call.outer")))
+
+;;; Dired — doom-style navigation on top of evil-collection
+(with-eval-after-load 'dired
+  (evil-define-key 'normal dired-mode-map
+    (kbd "i")   #'wdired-change-to-wdired-mode
+    (kbd "C-c") #'dired-do-copy
+    (kbd "C-r") #'dired-do-rename))
 
 ;;; evil.el ends here

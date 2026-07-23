@@ -4,10 +4,10 @@
 (use-package treesit-auto
   :ensure t
   :custom
-  ;; 'always means it silently installs missing grammars without prompting you
-  (treesit-auto-install 'always) 
+  (treesit-auto-install 'always)
+  (treesit-auto-langs '(c-sharp css dockerfile elixir go gomod heex html json markdown ruby tsx typescript yaml))
   :config
   (global-treesit-auto-mode 1)
-  
-  ;; Limit treesit-auto to prioritize your exact preferred languages
-  (setq treesit-auto-langs '(c-sharp css dockerfile elixir heex html json markdown ruby tsx typescript yaml)))
+  (treesit-auto-install-all))
+
+;;; treesit.el ends here

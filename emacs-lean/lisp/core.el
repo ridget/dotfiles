@@ -42,8 +42,33 @@
 (which-key-mode 1)
 (setq which-key-idle-delay 0.3)
 
-;;; Dired extras (needed for dired-jump in keys.el)
+;;; Dired
 (require 'dired-x)
+(setq dired-listing-switches "-alh --group-directories-first"
+      dired-dwim-target t
+      dired-auto-revert-buffer t
+      dired-kill-when-opening-new-dired-buffer t)
+
+;;; consult-dir — fuzzy directory jumping (telescope-style)
+(use-package consult-dir
+  :after (consult vertico)
+  :bind (:map vertico-map
+         ("C-d" . consult-dir)
+         ("C-j" . consult-dir-jump-file)))
+
+(defun my/project-find-directory ()
+  "Fuzzy-find a directory under the current project and open dired."
+  (interactive)
+  (let* ((pr (project-current t))
+         (root (project-root pr))
+         (default-directory root)
+         (dirs (split-string
+                (shell-command-to-string
+                 "fd --type d --hidden --exclude .git")
+                "\n" t))
+         (dirs (mapcar (lambda (d) (concat root d)) dirs))
+         (chosen (completing-read "Directory: " dirs nil t)))
+    (dired chosen)))
 
 ;;; winner-mode — window layout undo/redo (built-in)
 (winner-mode 1)
