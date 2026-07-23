@@ -7,7 +7,6 @@
   (treesit-auto-install 'always)
   (treesit-auto-langs '(c-sharp css dockerfile elixir go gomod heex html json markdown ruby tsx typescript yaml))
   :config
-  (global-treesit-auto-mode 1)
-  (treesit-auto-install-all))
+  (global-treesit-auto-mode 1))
 
 ;;; treesit.el ends here

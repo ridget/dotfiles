@@ -2,6 +2,7 @@
 
 (use-package gdscript-mode
   :vc (:url "https://github.com/godotengine/emacs-gdscript-mode" :rev :newest)
+  :defer t
   :mode "\\.gd\\'")
 
 (add-to-list 'my/eglot-modes 'gdscript-mode)

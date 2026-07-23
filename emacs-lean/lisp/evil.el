@@ -26,8 +26,8 @@
 
 ;;; Commenter (gc to comment, gcc for line)
 (use-package evil-nerd-commenter
-  :after evil
-  :config
+  :commands (evilnc-comment-operator evilnc-comment-or-uncomment-lines)
+  :init
   (define-key evil-normal-state-map "gc" #'evilnc-comment-operator)
   (define-key evil-visual-state-map "gc" #'evilnc-comment-operator)
   (define-key evil-normal-state-map "gcc" #'evilnc-comment-or-uncomment-lines))

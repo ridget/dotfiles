@@ -51,7 +51,7 @@
 
 ;;; consult-dir — fuzzy directory jumping (telescope-style)
 (use-package consult-dir
-  :after (consult vertico)
+  :commands (consult-dir consult-dir-jump-file)
   :bind (:map vertico-map
          ("C-d" . consult-dir)
          ("C-j" . consult-dir-jump-file)))
