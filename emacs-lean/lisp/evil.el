@@ -16,7 +16,9 @@
 (use-package evil-collection
   :after evil
   :config
-  (evil-collection-init))
+  (evil-collection-init
+   '(consult corfu dired ediff eglot embark flymake helpful
+     magit magit-section markdown-mode vertico xref)))
 
 ;;; Surround (ys.../cs.../ds...)
 (use-package evil-surround
@@ -57,7 +59,7 @@
   (define-key evil-outer-text-objects-map "a"
     (evil-textobj-tree-sitter-get-textobj "parameter.outer"))
   (define-key evil-inner-text-objects-map "g"
-    (evil-textobj-tree-sitter-get-textobj "call.outer"))
+    (evil-textobj-tree-sitter-get-textobj "call.inner"))
   (define-key evil-outer-text-objects-map "g"
     (evil-textobj-tree-sitter-get-textobj "call.outer")))
 

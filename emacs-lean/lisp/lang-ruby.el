@@ -15,6 +15,9 @@
 ;;; ruby-lsp — eglot knows it automatically; install via:
 ;;;   gem install ruby-lsp  OR  add ruby-lsp to Gemfile dev group
 ;;; Formatting and diagnostics (rubocop/standard) handled by ruby-lsp itself.
-;;; Use SPC c f (eglot-format) or format-on-save via eglot's willSave.
+
+;; Disable apheleia for ruby — ruby-lsp handles formatting via eglot
+(with-eval-after-load 'apheleia
+  (setf (alist-get 'ruby-ts-mode apheleia-mode-alist) nil))
 
 ;;; lang-ruby.el ends here

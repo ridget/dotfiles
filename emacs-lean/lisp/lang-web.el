@@ -32,4 +32,8 @@
                    (web-mode     . prettier)))
     (setf (alist-get (car entry) apheleia-mode-alist) (cdr entry))))
 
+;;; Emmet for HTML
+(use-package emmet-mode
+  :hook html-ts-mode)
+
 ;;; lang-web.el ends here

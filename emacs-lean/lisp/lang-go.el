@@ -4,7 +4,8 @@
   :ensure nil
   :mode "\\.go\\'")
 
-(add-to-list 'my/eglot-modes 'go-ts-mode)
+(dolist (mode '(go-ts-mode go-mod-ts-mode))
+  (add-to-list 'my/eglot-modes mode))
 
 (with-eval-after-load 'apheleia
   (setf (alist-get 'go-ts-mode apheleia-mode-alist) '(goimports)))

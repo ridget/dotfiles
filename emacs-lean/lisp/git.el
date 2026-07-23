@@ -8,7 +8,7 @@
 ;;; diff-hl — vc-gutter indicators (like Doom's +pretty module)
 (use-package diff-hl
   :hook
-  ((prog-mode          . diff-hl-mode)
+  ((after-init         . global-diff-hl-mode)
    (magit-pre-refresh  . diff-hl-magit-pre-refresh)
    (magit-post-refresh . diff-hl-magit-post-refresh)))
 

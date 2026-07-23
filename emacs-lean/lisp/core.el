@@ -44,13 +44,18 @@
 
 ;;; Dired
 (require 'dired-x)
-(setq dired-listing-switches "-alh --group-directories-first"
+(when (executable-find "gls")
+  (setq insert-directory-program "gls"))
+(setq dired-listing-switches (if (executable-find "gls")
+                                 "-alh --group-directories-first"
+                               "-alh")
       dired-dwim-target t
       dired-auto-revert-buffer t
       dired-kill-when-opening-new-dired-buffer t)
 
 ;;; consult-dir — fuzzy directory jumping (telescope-style)
 (use-package consult-dir
+  :after vertico
   :commands (consult-dir consult-dir-jump-file)
   :bind (:map vertico-map
          ("C-d" . consult-dir)
@@ -59,6 +64,8 @@
 (defun my/project-find-directory ()
   "Fuzzy-find a directory under the current project and open dired."
   (interactive)
+  (unless (executable-find "fd")
+    (user-error "fd is required: brew install fd"))
   (let* ((pr (project-current t))
          (root (project-root pr))
          (default-directory root)

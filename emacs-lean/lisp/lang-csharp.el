@@ -15,7 +15,8 @@
 ;; required for eglot. Verify the wrapper's exact stdio invocation from its README.
 ;; Fallback if the handshake is too fiddly: csharp-ls
 ;;   (dotnet tool install -g csharp-ls) with server entry ("csharp-ls").
-(with-eval-after-load 'eglotexport DOTNET_GOTO_DEFINITION_SYMBOLIC_LINKS=true
+(setenv "DOTNET_GOTO_DEFINITION_SYMBOLIC_LINKS" "true")
+(with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
                '(csharp-ts-mode . ("roslyn-language-server" "--stdio" "--autoLoadProjects"))))
 

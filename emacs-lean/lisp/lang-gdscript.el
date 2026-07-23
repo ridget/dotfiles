@@ -12,4 +12,9 @@
   (add-to-list 'eglot-server-programs
                '(gdscript-mode . ("localhost" 6005))))
 
+;; pip install gdtoolkit
+(with-eval-after-load 'apheleia
+  (setf (alist-get 'gdformat apheleia-formatters) '("gdformat" "-"))
+  (setf (alist-get 'gdscript-mode apheleia-mode-alist) 'gdformat))
+
 ;;; lang-gdscript.el ends here

@@ -2,15 +2,15 @@
 
 (use-package obsidian
   :vc (:url "https://github.com/licht1stein/obsidian.el" :rev :newest)
+  :defer t
+  :commands (obsidian-search obsidian-capture obsidian-daily-note
+             obsidian-jump obsidian-follow-link-at-point
+             obsidian-backlink-jump obsidian-insert-wikilink)
   :config
   (obsidian-directory "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain")
   (global-obsidian-mode t)
   :custom
-  (obsidian-inbox-directory "inbox")
-  :bind (:map obsidian-mode-map
-         ("C-c C-o" . obsidian-follow-link-at-point)
-         ("C-c C-b" . obsidian-backlink-jump)
-         ("C-c C-l" . obsidian-insert-wikilink)))
+  (obsidian-inbox-directory "inbox"))
 
 (defvar obsidian-vaults
   '(("second-brain"   . "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain")
